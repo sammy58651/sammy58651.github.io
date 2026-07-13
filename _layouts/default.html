@@ -37,7 +37,23 @@
   </style>
 </head>
 <body>
+  <script>
+  // 先把原本 Jekyll 產生的網頁標題存起來
+  const originalTitle = document.title;
 
+  // 當使用者切換到別的分頁（離開本網頁）
+  window.addEventListener('blur', () => {
+    document.title = '(((( ;°Д°)))) 快回來寫題啦！'; // 這裡可以換成你想顯示的惡搞文字
+  });
+
+  // 當使用者點回本分頁（回來網頁）
+  window.addEventListener('focus', () => {
+    document.title = originalTitle; // 恢復成原本的標題
+  });
+</script>
+
+
+  
   <header>
     <h1><a href="/">{{ site.title }}</a></h1>
     <nav>
