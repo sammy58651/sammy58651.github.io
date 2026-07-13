@@ -76,7 +76,12 @@
       <img src="/assets/meow.png" >
       <h3>呵呵無聊</h3>
       <p style="font-size: 0.85em; color: #888;">熱愛貓咪的貓派工程師 🐱</p>
-      
+      <div class="heart-counter-container" style="margin-top: 15px;">
+        <button onclick="clickHeart()" style="background: none; border: none; cursor: pointer; font-size: 1.5em; padding: 0; outline: none;">
+          ❤️
+        </button>
+        <span id="heart-count" style="font-size: 1.1em; font-weight: bold; color: #e0245e; margin-left: 5px;">0</span>
+      </div>
       <div class="profile-links">
         <a href="https://github.com/sammy58651" target="_blank">GitHub</a>
       </div>
@@ -88,6 +93,29 @@
   <footer>
     <p>© {{ site.time | date: "%Y" }} {{ site.title }} - Powered by Jekyll</p>
   </footer>
+  <script>
+  // 網頁載入時，先檢查之前有沒有存過點擊次數
+  document.addEventListener("DOMContentLoaded", function() {
+    // 如果以前有存過數字，就讀出來顯示；沒有的話就從 0 開始
+    let currentCount = localStorage.getItem("likeCount") || 0;
+    document.getElementById("heart-count").innerText = currentCount;
+  });
 
+  // 當使用者按下愛心時觸發的動作
+  function clickHeart() {
+    // 1. 取得目前的數字並加 1
+    let countSpan = document.getElementById("heart-count");
+    let newCount = parseInt(countSpan.innerText) + 1;
+    
+    // 2. 更新網頁上的數字顯示
+    countSpan.innerText = newCount;
+    
+    // 3. 把新的數字永久存在瀏覽器裡
+    localStorage.setItem("likeCount", newCount);
+    
+    // 4. 在新分頁打開你指定的 YouTube 連結
+    window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ&list=RDEMt6MUSQI0t_Ts2EDUDWGRhQ&start_radio=1", "_blank");
+  }
+</script>
 </body>
 </html>
