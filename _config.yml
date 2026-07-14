@@ -1,3 +1,6 @@
 title: 解題筆記
 description: 記錄程式競賽與心得
 theme: minima # 可以先用 Jekyll 內建的預設主題
+collections:
+  diaries:
+    output: true # 允許 Jekyll 幫每一篇日記產生獨立的網頁
